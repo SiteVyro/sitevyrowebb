@@ -1,11 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { useScroll, useTransform, motion } from "framer-motion";
-
 function FloatingPaths({ position }: { position: number }) {
-  // Reduced from 46 to 18 paths for performance
-  const paths = Array.from({ length: 18 }, (_, i) => ({
+  const paths = Array.from({ length: 10 }, (_, i) => ({
     id: i,
     d: `M-${380 - i * 12 * position} -${189 + i * 15}C-${
       380 - i * 12 * position
@@ -49,23 +45,20 @@ function FloatingPaths({ position }: { position: number }) {
 }
 
 export function BackgroundPathsParallax({ children }: { children?: React.ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end end"],
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -400]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -600]);
-
   return (
-    <div ref={ref} className="relative w-full overflow-hidden">
-      <motion.div style={{ y: y1 }} className="fixed inset-0 pointer-events-none z-0">
+    <div className="relative w-full overflow-hidden" style={{ perspective: "1px" }}>
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{ transform: "translateZ(-1px) scale(2)" }}
+      >
         <FloatingPaths position={1} />
-      </motion.div>
-      <motion.div style={{ y: y2 }} className="fixed inset-0 pointer-events-none z-0">
+      </div>
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{ transform: "translateZ(-2px) scale(3)" }}
+      >
         <FloatingPaths position={-1} />
-      </motion.div>
+      </div>
       <div className="relative z-10">{children}</div>
     </div>
   );
