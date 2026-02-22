@@ -54,18 +54,18 @@ export function BackgroundPathsParallax({ children }: { children?: React.ReactNo
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
+    offset: ["start start", "end end"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -150]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -250]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -400]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -600]);
 
   return (
-    <div ref={ref} className="relative w-full min-h-screen overflow-hidden">
-      <motion.div style={{ y: y1 }} className="absolute inset-0">
+    <div ref={ref} className="relative w-full overflow-hidden">
+      <motion.div style={{ y: y1 }} className="fixed inset-0 pointer-events-none z-0">
         <FloatingPaths position={1} />
       </motion.div>
-      <motion.div style={{ y: y2 }} className="absolute inset-0">
+      <motion.div style={{ y: y2 }} className="fixed inset-0 pointer-events-none z-0">
         <FloatingPaths position={-1} />
       </motion.div>
       <div className="relative z-10">{children}</div>
