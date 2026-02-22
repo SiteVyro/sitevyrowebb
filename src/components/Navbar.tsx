@@ -45,7 +45,7 @@ export default function Navbar() {
           href="#hero"
           className="flex items-center px-2 pr-1"
         >
-          <img src={logo} alt="Sitevyro" className="h-8 w-auto" />
+          <img src={logo} alt="Sitevyro" className="h-8 w-auto" width={32} height={32} />
         </a>
 
         {/* Nav items */}

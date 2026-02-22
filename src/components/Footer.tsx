@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           <div>
-            <img src={logo} alt="Sitevyro" className="h-12 w-auto" />
+            <img src={logo} alt="Sitevyro" className="h-12 w-auto" width={48} height={48} loading="lazy" />
             <p className="mt-2 text-sm text-muted-foreground">{t.footer.address[lang]}</p>
           </div>
 
