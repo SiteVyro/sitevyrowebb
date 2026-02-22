@@ -1,97 +1,83 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Globe } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Globe, Home, Briefcase, Users, Mail } from "lucide-react";
 
 export default function Navbar() {
   const { lang, toggleLang, t } = useLanguage();
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const [visible, setVisible] = useState(true);
 
-  useEffect(() => {
-    const handle = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handle);
-    return () => window.removeEventListener("scroll", handle);
-  }, []);
+  useMotionValueEvent(scrollYProgress, "change", (current) => {
+    if (typeof current === "number") {
+      const direction = current - scrollYProgress.getPrevious()!;
+      if (scrollYProgress.get() < 0.05) {
+        setVisible(true);
+      } else {
+        setVisible(direction < 0);
+      }
+    }
+  });
 
-  const links = [
-    { label: t.nav.services[lang], href: "#services" },
-    { label: t.nav.about[lang], href: "#about" },
-    { label: t.nav.contact[lang], href: "#contact" },
+  const navItems = [
+    { name: lang === "sv" ? "Hem" : "Home", href: "#hero", icon: <Home className="w-4 h-4" /> },
+    { name: t.nav.services[lang], href: "#services", icon: <Briefcase className="w-4 h-4" /> },
+    { name: t.nav.about[lang], href: "#about", icon: <Users className="w-4 h-4" /> },
+    { name: t.nav.contact[lang], href: "#contact", icon: <Mail className="w-4 h-4" /> },
   ];
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-background/60 backdrop-blur-xl shadow-lg shadow-primary/5" : "bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-4 md:px-8 flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="text-xl md:text-2xl font-heading font-bold text-foreground tracking-tight">
+    <AnimatePresence mode="wait">
+      <motion.nav
+        initial={{ opacity: 1, y: -100 }}
+        animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="fixed top-6 inset-x-0 mx-auto z-50 flex max-w-fit items-center justify-center gap-1 rounded-full bg-primary/[0.06] backdrop-blur-xl border border-primary/20 shadow-[0_0_20px_-5px_hsl(var(--primary)/0.15)] px-2 py-2"
+      >
+        {/* Logo */}
+        <a
+          href="#hero"
+          className="text-base font-heading font-bold text-foreground tracking-tight px-4 pr-2"
+        >
           Site<span className="text-primary">vyro</span>
         </a>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-3">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-muted-foreground px-4 py-2 rounded-full bg-primary/[0.06] backdrop-blur-xl border border-primary/20 hover:border-primary/40 hover:text-primary hover:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.25)] transition-all duration-300"
-            >
-              {link.label}
-            </a>
-          ))}
-          <button
-            onClick={toggleLang}
-            className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary px-4 py-2 rounded-full bg-primary/[0.06] backdrop-blur-xl border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.25)] transition-all duration-300"
+        {/* Nav items */}
+        {navItems.map((item) => (
+          <a
+            key={item.href}
+            href={item.href}
+            className="relative text-sm font-medium text-muted-foreground px-4 py-2 rounded-full hover:text-primary hover:bg-primary/10 transition-all duration-300 hidden sm:block"
           >
-            <Globe className="w-4 h-4" />
-            {lang === "sv" ? "EN" : "SV"}
-          </button>
-        </div>
+            {item.name}
+          </a>
+        ))}
 
-        {/* Mobile toggle */}
-        <div className="flex md:hidden items-center gap-3">
-          <button
-            onClick={toggleLang}
-            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-all bg-primary/[0.06] backdrop-blur-xl border border-primary/20 px-2.5 py-1 rounded-full"
+        {/* Mobile icons */}
+        {navItems.map((item) => (
+          <a
+            key={`mobile-${item.href}`}
+            href={item.href}
+            className="text-muted-foreground p-2 rounded-full hover:text-primary hover:bg-primary/10 transition-all duration-300 sm:hidden"
           >
-            <Globe className="w-3.5 h-3.5" />
-            {lang === "sv" ? "EN" : "SV"}
-          </button>
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="text-foreground p-1">
-            <div className="w-6 flex flex-col gap-1.5">
-              <motion.span animate={{ rotate: mobileOpen ? 45 : 0, y: mobileOpen ? 8 : 0 }} className="block h-[2px] bg-foreground transition-all" />
-              <motion.span animate={{ opacity: mobileOpen ? 0 : 1 }} className="block h-[2px] bg-foreground" />
-              <motion.span animate={{ rotate: mobileOpen ? -45 : 0, y: mobileOpen ? -8 : 0 }} className="block h-[2px] bg-foreground transition-all" />
-            </div>
-          </button>
-        </div>
-      </div>
+            {item.icon}
+          </a>
+        ))}
 
-      {/* Mobile menu */}
-      <motion.div
-        initial={false}
-        animate={{ height: mobileOpen ? "auto" : 0, opacity: mobileOpen ? 1 : 0 }}
-        className="md:hidden overflow-hidden glass"
-      >
-        <div className="px-4 py-4 flex flex-col gap-4">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="text-base text-muted-foreground hover:text-primary transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </motion.div>
-    </motion.nav>
+        {/* Language toggle */}
+        <button
+          onClick={toggleLang}
+          className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary px-3 py-2 rounded-full bg-primary/10 border border-primary/20 hover:border-primary/40 transition-all duration-300 ml-1"
+        >
+          <Globe className="w-4 h-4" />
+          <span className="hidden sm:inline">{lang === "sv" ? "EN" : "SV"}</span>
+        </button>
+      </motion.nav>
+    </AnimatePresence>
   );
 }
