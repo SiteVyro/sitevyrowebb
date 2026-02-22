@@ -1,20 +1,23 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useScroll, useTransform, motion } from "framer-motion";
 
 function FloatingPaths({ position }: { position: number }) {
-  const paths = Array.from({ length: 46 }, (_, i) => ({
+  // Reduced from 46 to 18 paths for performance
+  const paths = Array.from({ length: 18 }, (_, i) => ({
     id: i,
-    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
-      380 - i * 5 * position
-    } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${
-      152 - i * 5 * position
-    } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
-      684 - i * 5 * position
-    } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-    color: `rgba(15,23,42,${0.1 + i * 0.03})`,
-    width: 0.6 + i * 0.04,
+    d: `M-${380 - i * 12 * position} -${189 + i * 15}C-${
+      380 - i * 12 * position
+    } -${189 + i * 15} -${312 - i * 12 * position} ${216 - i * 15} ${
+      152 - i * 12 * position
+    } ${343 - i * 15}C${616 - i * 12 * position} ${470 - i * 15} ${
+      684 - i * 12 * position
+    } ${875 - i * 15} ${684 - i * 12 * position} ${875 - i * 15}`,
+    width: 0.6 + i * 0.08,
+    opacity: 0.3 + i * 0.04,
+    duration: `${14 + i * 2}s`,
+    delay: `${i * 0.5}s`,
   }));
 
   return (
@@ -26,24 +29,17 @@ function FloatingPaths({ position }: { position: number }) {
         preserveAspectRatio="xMidYMid slice"
       >
         <title>Background Paths</title>
-        {/* Original set */}
         {paths.map((path) => (
-          <motion.path
+          <path
             key={path.id}
             d={path.d}
             stroke="currentColor"
             strokeWidth={path.width}
-            strokeOpacity={0.3 + path.id * 0.03}
-            initial={{ pathLength: 0.3, opacity: 0.8 }}
-            animate={{
-              pathLength: 1,
-              opacity: [0.5, 0.9, 0.5],
-              pathOffset: [0, 1, 0],
-            }}
-            transition={{
-              duration: 12 + Math.random() * 8,
-              repeat: Infinity,
-              ease: "linear",
+            strokeOpacity={path.opacity}
+            className="animate-path-flow"
+            style={{
+              animationDuration: path.duration,
+              animationDelay: path.delay,
             }}
           />
         ))}
