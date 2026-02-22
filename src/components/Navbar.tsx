@@ -26,7 +26,7 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass shadow-lg shadow-primary/5" : "bg-transparent"
+        scrolled ? "bg-background/60 backdrop-blur-xl shadow-lg shadow-primary/5" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 md:px-8 flex items-center justify-between h-16 md:h-20">
@@ -35,19 +35,19 @@ export default function Navbar() {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-3">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+              className="text-sm font-medium text-muted-foreground px-4 py-2 rounded-full bg-primary/[0.06] backdrop-blur-xl border border-primary/20 hover:border-primary/40 hover:text-primary hover:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.25)] transition-all duration-300"
             >
               {link.label}
             </a>
           ))}
           <button
             onClick={toggleLang}
-            className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300 glass px-3 py-1.5 rounded-full"
+            className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary px-4 py-2 rounded-full bg-primary/[0.06] backdrop-blur-xl border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.25)] transition-all duration-300"
           >
             <Globe className="w-4 h-4" />
             {lang === "sv" ? "EN" : "SV"}
@@ -58,7 +58,7 @@ export default function Navbar() {
         <div className="flex md:hidden items-center gap-3">
           <button
             onClick={toggleLang}
-            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors glass px-2.5 py-1 rounded-full"
+            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-all bg-primary/[0.06] backdrop-blur-xl border border-primary/20 px-2.5 py-1 rounded-full"
           >
             <Globe className="w-3.5 h-3.5" />
             {lang === "sv" ? "EN" : "SV"}
