@@ -110,5 +110,5 @@
 .animate-path-flow {
   stroke-dasharray: 1;
   animation: path-flow linear infinite;
-  will-change: stroke-dashoffset, opacity;
+  
 }
