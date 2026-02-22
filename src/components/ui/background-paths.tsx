@@ -1,19 +1,20 @@
 "use client";
 
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+
 function FloatingPaths({ position }: { position: number }) {
-  const paths = Array.from({ length: 10 }, (_, i) => ({
+  const paths = Array.from({ length: 46 }, (_, i) => ({
     id: i,
-    d: `M-${380 - i * 12 * position} -${189 + i * 15}C-${
-      380 - i * 12 * position
-    } -${189 + i * 15} -${312 - i * 12 * position} ${216 - i * 15} ${
-      152 - i * 12 * position
-    } ${343 - i * 15}C${616 - i * 12 * position} ${470 - i * 15} ${
-      684 - i * 12 * position
-    } ${875 - i * 15} ${684 - i * 12 * position} ${875 - i * 15}`,
-    width: 0.6 + i * 0.08,
-    opacity: 0.3 + i * 0.04,
-    duration: `${14 + i * 2}s`,
-    delay: `${i * 0.5}s`,
+    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
+      380 - i * 5 * position
+    } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${
+      152 - i * 5 * position
+    } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
+      684 - i * 5 * position
+    } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
+    color: `rgba(15,23,42,${0.1 + i * 0.03})`,
+    width: 0.6 + i * 0.04,
   }));
 
   return (
@@ -25,17 +26,24 @@ function FloatingPaths({ position }: { position: number }) {
         preserveAspectRatio="xMidYMid slice"
       >
         <title>Background Paths</title>
+        {/* Original set */}
         {paths.map((path) => (
-          <path
+          <motion.path
             key={path.id}
             d={path.d}
             stroke="currentColor"
             strokeWidth={path.width}
-            strokeOpacity={path.opacity}
-            className="animate-path-flow"
-            style={{
-              animationDuration: path.duration,
-              animationDelay: path.delay,
+            strokeOpacity={0.3 + path.id * 0.03}
+            initial={{ pathLength: 0.3, opacity: 0.8 }}
+            animate={{
+              pathLength: 1,
+              opacity: [0.5, 0.9, 0.5],
+              pathOffset: [0, 1, 0],
+            }}
+            transition={{
+              duration: 12 + Math.random() * 8,
+              repeat: Infinity,
+              ease: "linear",
             }}
           />
         ))}
@@ -45,20 +53,23 @@ function FloatingPaths({ position }: { position: number }) {
 }
 
 export function BackgroundPathsParallax({ children }: { children?: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"],
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -400]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -600]);
+
   return (
-    <div className="relative w-full overflow-hidden" style={{ perspective: "1px" }}>
-      <div
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{ transform: "translateZ(-1px) scale(2)" }}
-      >
+    <div ref={ref} className="relative w-full overflow-hidden">
+      <motion.div style={{ y: y1 }} className="fixed inset-0 pointer-events-none z-0">
         <FloatingPaths position={1} />
-      </div>
-      <div
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{ transform: "translateZ(-2px) scale(3)" }}
-      >
+      </motion.div>
+      <motion.div style={{ y: y2 }} className="fixed inset-0 pointer-events-none z-0">
         <FloatingPaths position={-1} />
-      </div>
+      </motion.div>
       <div className="relative z-10">{children}</div>
     </div>
   );

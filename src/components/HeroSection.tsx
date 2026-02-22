@@ -7,41 +7,41 @@ export default function HeroSection() {
 
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: {
+    visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
         duration: 1,
-        delay: 0.3,
+        delay: 0.5 + i * 0.2,
         ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number],
       },
-    },
+    }),
   };
 
   return (
     <section id="hero">
       <div className="relative min-h-screen w-full flex items-center justify-center pt-32">
         {/* Glow orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[80px] animate-pulse-glow" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
 
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 md:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="animate-fade-up">
+            <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
               <h1 className="mt-8 text-5xl sm:text-6xl md:text-8xl font-bold font-heading tracking-tight">
                 <span className="block text-foreground">{t.hero.title1[lang]}</span>
                 <span className="block gradient-text glow-text mt-2">{t.hero.title2[lang]}</span>
               </h1>
-            </div>
+            </motion.div>
 
-            <motion.div variants={fadeUpVariants} initial="hidden" animate="visible">
+            <motion.div custom={2} variants={fadeUpVariants} initial="hidden" animate="visible">
               <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 <span className="text-primary font-semibold">Vyro</span> — Vision Your Reach Online. {t.hero.subtitle[lang]}
               </p>
             </motion.div>
 
-            <motion.div variants={fadeUpVariants} initial="hidden" animate="visible">
+            <motion.div custom={3} variants={fadeUpVariants} initial="hidden" animate="visible">
               <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
                   href="#contact"

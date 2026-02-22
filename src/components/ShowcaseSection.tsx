@@ -1,5 +1,6 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import { motion } from "framer-motion";
 
 export default function ShowcaseSection() {
   const { lang } = useLanguage();
@@ -9,10 +10,21 @@ export default function ShowcaseSection() {
       <ContainerScroll
         titleComponent={
           <div className="text-center">
-            <p className="text-muted-foreground text-lg mb-4">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-muted-foreground text-lg mb-4"
+            >
               {lang === "sv" ? "Se vad vi kan göra" : "See what we can do"}
-            </p>
-            <h2 className="text-4xl md:text-6xl font-bold font-heading">
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-4xl md:text-6xl font-bold font-heading"
+            >
               <span className="text-foreground">
                 {lang === "sv" ? "Webbplatser som" : "Websites that"}
               </span>
@@ -20,7 +32,7 @@ export default function ShowcaseSection() {
               <span className="gradient-text glow-text">
                 {lang === "sv" ? "imponerar" : "impress"}
               </span>
-            </h2>
+            </motion.h2>
           </div>
         }
       >
@@ -33,14 +45,18 @@ export default function ShowcaseSection() {
               { label: lang === "sv" ? "Modern UI" : "Modern UI", icon: "✨" },
               { label: lang === "sv" ? "Säkerhet" : "Security", icon: "🔒" },
               { label: lang === "sv" ? "Support" : "Support", icon: "💬" },
-            ].map((item) => (
-              <div
+            ].map((item, i) => (
+              <motion.div
                 key={item.label}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
                 className="glass rounded-xl p-6 text-center glow-border hover-glow"
               >
                 <div className="text-3xl mb-2">{item.icon}</div>
                 <p className="text-sm font-medium text-foreground">{item.label}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
