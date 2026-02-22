@@ -45,14 +45,14 @@ export default function HeroSection() {
               <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
                   href="#contact"
-                  className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-sm transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.6)] hover:scale-105"
+                  className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary/15 backdrop-blur-xl border border-primary/30 text-primary font-semibold text-sm transition-all duration-300 hover:bg-primary/25 hover:border-primary/50 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.4)] hover:scale-105"
                 >
                   {t.hero.cta[lang]}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
                   href="#services"
-                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full glass glow-border font-semibold text-sm text-foreground transition-all duration-300 hover:bg-secondary/80 hover:scale-105"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary/[0.06] backdrop-blur-xl border border-primary/20 font-semibold text-sm text-foreground transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_25px_-5px_hsl(var(--primary)/0.25)] hover:scale-105"
                 >
                   {t.hero.ctaSecondary[lang]}
                 </a>
