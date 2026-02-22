@@ -18,13 +18,15 @@ function FloatingPaths({ position }: { position: number }) {
   }));
 
   return (
-    <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute inset-0 pointer-events-none" style={{ height: "300vh" }}>
       <svg
         className="w-full h-full text-primary/50"
-        viewBox="0 0 696 316"
+        viewBox="0 0 696 916"
         fill="none"
+        preserveAspectRatio="xMidYMid slice"
       >
         <title>Background Paths</title>
+        {/* Original set */}
         {paths.map((path) => (
           <motion.path
             key={path.id}
