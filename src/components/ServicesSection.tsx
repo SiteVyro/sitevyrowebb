@@ -35,9 +35,9 @@ export default function ServicesSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="group glass rounded-2xl p-8 hover-glow cursor-default"
+                className="group rounded-2xl p-8 cursor-default bg-primary/[0.04] backdrop-blur-xl border border-primary/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_0_20px_-5px_hsl(var(--primary)/0.15)] hover:border-primary/40 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_0_30px_-5px_hsl(var(--primary)/0.3)] transition-all duration-500"
               >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-500">
+                <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center mb-6 group-hover:bg-primary/25 transition-colors duration-500">
                   <Icon className="w-7 h-7 text-primary group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <h3 className="text-xl font-heading font-semibold mb-3">{t.services[key].title[lang]}</h3>
