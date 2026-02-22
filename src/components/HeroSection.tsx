@@ -7,15 +7,15 @@ export default function HeroSection() {
 
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
+    visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 1,
-        delay: 0.5 + i * 0.2,
+        delay: 0.3,
         ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number],
       },
-    }),
+    },
   };
 
   return (
@@ -28,20 +28,20 @@ export default function HeroSection() {
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 md:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
+            <div className="animate-fade-up">
               <h1 className="mt-8 text-5xl sm:text-6xl md:text-8xl font-bold font-heading tracking-tight">
                 <span className="block text-foreground">{t.hero.title1[lang]}</span>
                 <span className="block gradient-text glow-text mt-2">{t.hero.title2[lang]}</span>
               </h1>
-            </motion.div>
+            </div>
 
-            <motion.div custom={2} variants={fadeUpVariants} initial="hidden" animate="visible">
+            <motion.div variants={fadeUpVariants} initial="hidden" animate="visible">
               <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 <span className="text-primary font-semibold">Vyro</span> — Vision Your Reach Online. {t.hero.subtitle[lang]}
               </p>
             </motion.div>
 
-            <motion.div custom={3} variants={fadeUpVariants} initial="hidden" animate="visible">
+            <motion.div variants={fadeUpVariants} initial="hidden" animate="visible">
               <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
                   href="#contact"
