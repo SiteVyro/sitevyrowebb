@@ -1,4 +1,5 @@
 import { useState } from "react";
+import logo from "@/assets/logo.png";
 import {
   motion,
   AnimatePresence,
@@ -42,9 +43,9 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#hero"
-          className="text-base font-heading font-bold text-foreground tracking-tight px-4 pr-2"
+          className="flex items-center px-2 pr-1"
         >
-          Site<span className="text-primary">vyro</span>
+          <img src={logo} alt="Sitevyro" className="h-8 w-auto" />
         </a>
 
         {/* Nav items */}
