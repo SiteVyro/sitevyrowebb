@@ -5,12 +5,13 @@ import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ShowcaseSection from "@/components/ShowcaseSection";
-import { BackgroundPathsParallax } from "@/components/ui/background-paths";
+import { DottedSurface } from "@/components/ui/dotted-surface";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background relative">
-      <BackgroundPathsParallax>
+    <div className="min-h-screen bg-black relative">
+      <DottedSurface />
+      <div className="relative z-10">
         <Navbar />
         <HeroSection />
         <ShowcaseSection />
@@ -18,7 +19,7 @@ const Index = () => {
         <AboutSection />
         <ContactSection />
         <Footer />
-      </BackgroundPathsParallax>
+      </div>
     </div>
   );
 };
