@@ -126,13 +126,6 @@ const translations = {
         },
       },
       {
-        q: { sv: "Vad kostar en hemsida?", en: "How much does a website cost?" },
-        a: {
-          sv: "Start 4 900 kr (upp till 3 sidor), Standard 5 900 kr (upp till 6 sidor, bildgalleri), Premium 6 900 kr (upp till 10 sidor, avancerade funktioner). Alla priser är inklusive 25 % moms.",
-          en: "Start SEK 4,900 (up to 3 pages), Standard SEK 5,900 (up to 6 pages, image gallery), Premium SEK 6,900 (up to 10 pages, advanced features). All prices include 25% VAT.",
-        },
-      },
-      {
         q: { sv: "Måste jag betala något löpande?", en: "Do I have to pay anything monthly?" },
         a: {
           sv: "Ja, webbunderhåll kostar 225 kr/månad (2 700 kr/år). Det ingår hosting, backup, 3 uppdateringar/mån, statistik och support. Ingen bindningstid.",
@@ -144,13 +137,6 @@ const translations = {
         a: {
           sv: "Inom 7 dagar från att du godkänt underlag har du ett första utkast att titta på.",
           en: "Within 7 days of approving the brief, you'll have a first draft to review.",
-        },
-      },
-      {
-        q: { sv: "Kan jag uppdatera hemsidan själv?", en: "Can I update the website myself?" },
-        a: {
-          sv: "Du kan alltid mejla mig ändringar så publicerar jag inom 24 timmar (3 gånger/mån ingår). Vill du lära dig själv går det också bra.",
-          en: "You can always email me changes and I'll publish within 24 hours (3 times/month included). If you want to learn to do it yourself, that works too.",
         },
       },
       {
