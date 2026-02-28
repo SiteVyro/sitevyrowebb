@@ -1,30 +1,18 @@
 
 
-## Plan: Add FAQ Section with Scroll Accordion
+## Plan: Restyle FAQ to Chat Conversation Layout
 
-### 1. Install dependencies
-- `gsap` and `@gsap/react`
+The reference image shows a chat-bubble style: questions appear as gray bubbles on the **left** (inline-width, not full-width), answers appear as blue bubbles on the **right**, mimicking a text message conversation.
 
-### 2. Add FAQ translations to `src/contexts/LanguageContext.tsx`
-Add a `faq` section with `title`, `subtitle`, and all 12 Q&A pairs in both Swedish and English.
+### Changes to `src/components/ui/faq-chat-accordion.tsx`
 
-### 3. Create `src/components/ui/scroll-faqaccordion.tsx`
-Adapt the provided component:
-- Remove `next/link` references, use standard React
-- Keep GSAP scroll-pinning + scrub animation
-- Keep framer-motion for open/close accordion items
-- Style with dark theme (white text on transparent/black) to match the site
-- Accept `data` prop with FAQ items
+1. **Question buttons**: Change from full-width to inline/fit-content, left-aligned, with light gray background (`bg-gray-200 text-gray-900`) and rounded-full pill shape. Remove border styling. Plus/minus icon sits inline next to the text.
 
-### 4. Create `src/components/FAQSection.tsx`
-- Use `useLanguage()` to get current language
-- Map the 12 FAQ items from translations, selecting `sv`/`en` based on `lang`
-- Render `ScrollFAQAccordion` with the translated data
-- Wrap in a section with `id="faq"`
+2. **Answer bubbles**: Right-align with `ml-auto`, use a bright blue background (`bg-[#3B9FFF]`) with white text, rounded-2xl, no border. Remove the subdued `bg-primary/10` styling.
 
-### 5. Update `src/pages/Index.tsx`
-- Import and add `<FAQSection />` between `ContactSection` and `Footer`
+3. **Layout**: Each item is a vertical stack — question bubble left-aligned, answer bubble right-aligned below it — creating the chat conversation feel.
 
-### FAQ Content (12 items, sv + en)
-All 12 questions/answers provided by the user, translated to English for the `en` language option.
+### Changes to `src/components/FAQSection.tsx`
+
+4. **Title styling**: Make the title bold black (`text-foreground`) and subtitle lighter, matching the reference's clean look. No changes needed — already correct for dark theme.
 
