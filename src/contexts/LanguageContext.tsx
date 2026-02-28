@@ -104,6 +104,99 @@ const translations = {
     rights: { sv: "Alla rättigheter förbehållna.", en: "All rights reserved." },
     address: { sv: "Värnamo, Sverige", en: "Värnamo, Sweden" },
   },
+  faq: {
+    title: { sv: "Vanliga Frågor", en: "Frequently Asked Questions" },
+    subtitle: {
+      sv: "Här hittar du svar på de vanligaste frågorna om våra tjänster",
+      en: "Find answers to the most common questions about our services",
+    },
+    items: [
+      {
+        q: { sv: "Vem är du?", en: "Who are you?" },
+        a: {
+          sv: "Jag heter William Lindsjö, är 16 år och grundare av siteVyro. Jag brinner för att hjälpa småföretag att synas online – med en personlig, långsiktig och prisvärd lösning.",
+          en: "My name is William Lindsjö, I'm 16 years old and the founder of siteVyro. I'm passionate about helping small businesses get noticed online – with a personal, long-term and affordable solution.",
+        },
+      },
+      {
+        q: { sv: "Varför ska jag välja dig – du är ju bara 16 år?", en: "Why should I choose you – you're only 16?" },
+        a: {
+          sv: "Min ålder är min styrka! Jag har vuxit upp med internet, är hungrig, engagerad och har låga omkostnader. Du får samma kvalitet som en dyr byrå till en bråkdel av priset – och jag finns kvar i decennier.",
+          en: "My age is my strength! I grew up with the internet, I'm hungry, dedicated and have low overhead. You get the same quality as an expensive agency at a fraction of the price – and I'll be around for decades.",
+        },
+      },
+      {
+        q: { sv: "Vad kostar en hemsida?", en: "How much does a website cost?" },
+        a: {
+          sv: "Start 4 900 kr (upp till 3 sidor), Standard 5 900 kr (upp till 6 sidor, bildgalleri), Premium 6 900 kr (upp till 10 sidor, avancerade funktioner). Alla priser är inklusive 25 % moms.",
+          en: "Start SEK 4,900 (up to 3 pages), Standard SEK 5,900 (up to 6 pages, image gallery), Premium SEK 6,900 (up to 10 pages, advanced features). All prices include 25% VAT.",
+        },
+      },
+      {
+        q: { sv: "Måste jag betala något löpande?", en: "Do I have to pay anything monthly?" },
+        a: {
+          sv: "Ja, webbunderhåll kostar 225 kr/månad (2 700 kr/år). Det ingår hosting, backup, 3 uppdateringar/mån, statistik och support. Ingen bindningstid.",
+          en: "Yes, web maintenance costs SEK 225/month (SEK 2,700/year). It includes hosting, backup, 3 updates/month, statistics and support. No contract period.",
+        },
+      },
+      {
+        q: { sv: "Hur lång tid tar det att få min hemsida?", en: "How long does it take to get my website?" },
+        a: {
+          sv: "Inom 7 dagar från att du godkänt underlag har du ett första utkast att titta på.",
+          en: "Within 7 days of approving the brief, you'll have a first draft to review.",
+        },
+      },
+      {
+        q: { sv: "Kan jag uppdatera hemsidan själv?", en: "Can I update the website myself?" },
+        a: {
+          sv: "Du kan alltid mejla mig ändringar så publicerar jag inom 24 timmar (3 gånger/mån ingår). Vill du lära dig själv går det också bra.",
+          en: "You can always email me changes and I'll publish within 24 hours (3 times/month included). If you want to learn to do it yourself, that works too.",
+        },
+      },
+      {
+        q: { sv: "Vad kostar en domän?", en: "How much does a domain cost?" },
+        a: {
+          sv: "Domänförnyelse kostar 250 kr/år. Det är en ren vidarefakturering – du betalar samma pris som jag.",
+          en: "Domain renewal costs SEK 250/year. It's a pure pass-through – you pay the same price as I do.",
+        },
+      },
+      {
+        q: { sv: "Kan jag få hjälp med logotyp?", en: "Can I get help with a logo?" },
+        a: {
+          sv: "Ja, jag skapar en unik logotyp för 450 kr + moms (totalt 562,50 kr inklusive moms).",
+          en: "Yes, I create a unique logo for SEK 450 + VAT (total SEK 562.50 including VAT).",
+        },
+      },
+      {
+        q: { sv: "Finns det någon kampanj just nu?", en: "Are there any promotions right now?" },
+        a: {
+          sv: "Ja! Tom 15 april får du GRATIS översättning till engelska (värde 3 000 kr) när du beställer webbpaket + underhåll.",
+          en: "Yes! Until April 15 you get FREE English translation (value SEK 3,000) when you order a web package + maintenance.",
+        },
+      },
+      {
+        q: { sv: "Fungerar hemsidan i mobilen?", en: "Does the website work on mobile?" },
+        a: {
+          sv: "Absolut! Alla sidor byggs med mobile first – snabba, snygga och lättanvända i mobilen.",
+          en: "Absolutely! All pages are built mobile first – fast, sleek and easy to use on mobile.",
+        },
+      },
+      {
+        q: { sv: "Syns jag på Google?", en: "Will I show up on Google?" },
+        a: {
+          sv: "Ja, alla paket innehåller grundläggande SEO. Välj tilläggen SEO (från 1 500 kr) eller GEO + SEO (från 2 500 kr) för extra synlighet – även i AI-chattbotar som ChatGPT.",
+          en: "Yes, all packages include basic SEO. Choose the SEO add-on (from SEK 1,500) or GEO + SEO (from SEK 2,500) for extra visibility – even in AI chatbots like ChatGPT.",
+        },
+      },
+      {
+        q: { sv: "Hur får jag hjälp om något krånglar?", en: "How do I get help if something goes wrong?" },
+        a: {
+          sv: "Du når mig alltid direkt på 076-580 45 68 eller Info@sitevyro.com. Jag svarar inom 24 timmar.",
+          en: "You can always reach me directly at 076-580 45 68 or Info@sitevyro.com. I respond within 24 hours.",
+        },
+      },
+    ],
+  },
 };
 
 type Translations = typeof translations;

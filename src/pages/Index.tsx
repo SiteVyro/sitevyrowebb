@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
+import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import ShowcaseSection from "@/components/ShowcaseSection";
 import { DottedSurface } from "@/components/ui/dotted-surface";
@@ -18,6 +19,7 @@ const Index = () => {
         <ServicesSection />
         <AboutSection />
         <ContactSection />
+        <FAQSection />
         <Footer />
       </div>
     </div>
