@@ -147,13 +147,6 @@ const translations = {
         },
       },
       {
-        q: { sv: "Kan jag få hjälp med logotyp?", en: "Can I get help with a logo?" },
-        a: {
-          sv: "Ja, jag skapar en unik logotyp för 450 kr + moms (totalt 562,50 kr inklusive moms).",
-          en: "Yes, I create a unique logo for SEK 450 + VAT (total SEK 562.50 including VAT).",
-        },
-      },
-      {
         q: { sv: "Finns det någon kampanj just nu?", en: "Are there any promotions right now?" },
         a: {
           sv: "Ja! Tom 15 april får du GRATIS översättning till engelska (värde 3 000 kr) när du beställer webbpaket + underhåll.",
