@@ -43,41 +43,41 @@ export function FaqAccordion({
         value={openItem ?? undefined}
         onValueChange={(value) => setOpenItem(value)}
       >
-        {data.map((item) => (
+      {data.map((item) => (
           <Accordion.Item
             key={item.id}
             value={item.id.toString()}
-            className="mb-3"
+            className="mb-4"
           >
+            {/* Question bubble - left aligned, inline width */}
             <Accordion.Trigger asChild>
               <button
                 className={cn(
-                  "flex items-center justify-between w-full rounded-2xl px-5 py-4 text-left transition-colors",
-                  "bg-white/5 border border-border/20 hover:bg-white/10 backdrop-blur-sm",
+                  "inline-flex items-center gap-2 rounded-2xl rounded-bl-sm px-4 py-3 text-left transition-colors",
+                  "bg-muted text-foreground hover:bg-muted/80",
                   questionClassName
                 )}
               >
-                <div className="flex items-center gap-2">
-                  {item.icon && item.iconPosition === "left" && (
-                    <span className="text-lg">{item.icon}</span>
-                  )}
-                  <span className="text-foreground font-medium text-sm md:text-base">
-                    {item.question}
-                  </span>
-                  {item.icon && item.iconPosition !== "left" && (
-                    <span className="text-lg">{item.icon}</span>
-                  )}
-                </div>
-
-                <span className="shrink-0 ml-4 text-muted-foreground">
+                {item.icon && item.iconPosition === "left" && (
+                  <span className="text-lg">{item.icon}</span>
+                )}
+                <span className="font-medium text-sm md:text-base">
+                  {item.question}
+                </span>
+                {item.icon && item.iconPosition !== "left" && (
+                  <span className="text-lg">{item.icon}</span>
+                )}
+                <span className="shrink-0 ml-1 text-muted-foreground">
                   {openItem === item.id.toString() ? (
-                    <Minus size={16} />
+                    <Minus size={14} />
                   ) : (
-                    <Plus size={16} />
+                    <Plus size={14} />
                   )}
                 </span>
               </button>
             </Accordion.Trigger>
+
+            {/* Answer bubble - right aligned */}
             <Accordion.Content forceMount asChild>
               <motion.div
                 initial="collapsed"
@@ -89,14 +89,14 @@ export function FaqAccordion({
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="overflow-hidden"
               >
-                <div className="px-5 pt-2 pb-4">
+                <div className="flex justify-end pt-2">
                   <div
                     className={cn(
-                      "rounded-2xl bg-primary/10 border border-primary/20 px-5 py-4",
+                      "inline-block rounded-2xl rounded-br-sm bg-primary px-4 py-3 max-w-[85%]",
                       answerClassName
                     )}
                   >
-                    <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+                    <p className="text-primary-foreground text-sm md:text-base leading-relaxed">
                       {item.answer}
                     </p>
                   </div>
