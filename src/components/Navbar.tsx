@@ -6,7 +6,7 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Globe, Home, Briefcase, Users, Mail } from "lucide-react";
+import { Globe, Home, Briefcase, Users, Mail, Share2 } from "lucide-react";
 
 export default function Navbar() {
   const { lang, toggleLang, t } = useLanguage();
@@ -28,6 +28,7 @@ export default function Navbar() {
     { name: lang === "sv" ? "Hem" : "Home", href: "#hero", icon: <Home className="w-4 h-4" /> },
     { name: t.nav.services[lang], href: "#services", icon: <Briefcase className="w-4 h-4" /> },
     { name: t.nav.about[lang], href: "#about", icon: <Users className="w-4 h-4" /> },
+    { name: lang === "sv" ? "Sociala Medier" : "Social Media", href: "/social", icon: <Share2 className="w-4 h-4" /> },
     { name: t.nav.contact[lang], href: "#contact", icon: <Mail className="w-4 h-4" /> },
   ];
 
