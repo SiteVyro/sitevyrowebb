@@ -7,7 +7,7 @@ import { Check, Instagram, Facebook, Linkedin, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GlowCard } from "@/components/ui/spotlight-card";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { HorizontalScrollCarousel } from "@/components/ui/horizontal-scroll-carousel";
+import { ZoomParallax } from "@/components/ui/zoom-parallax";
 
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
@@ -189,7 +189,9 @@ export default function Social() {
           >
             {lang === "sv" ? "Fotografens Tidigare Verk" : "Photographer's Previous Work"}
           </motion.h2>
-          <HorizontalScrollCarousel images={portfolioImages} />
+          <ZoomParallax
+            images={portfolioImages.map((src, i) => ({ src, alt: `Portfolio ${i + 1}` }))}
+          />
         </section>
 
         <SocialFooter />
