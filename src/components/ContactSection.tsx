@@ -1,6 +1,7 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { ContactUsButton } from "@/components/SocialFooter";
 
 export default function ContactSection() {
   const { lang, t } = useLanguage();
@@ -22,13 +23,12 @@ export default function ContactSection() {
         </motion.div>
 
         <div className="max-w-2xl mx-auto">
-          {/* Contact info */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-8"
+            className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-10"
           >
             {[
               { icon: Phone, label: "0765804568" },
@@ -46,6 +46,15 @@ export default function ContactSection() {
                 <span className="text-foreground text-lg">{label}</span>
               </motion.div>
             ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <ContactUsButton />
           </motion.div>
         </div>
       </div>

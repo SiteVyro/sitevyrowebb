@@ -2,17 +2,69 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
+import { useState } from "react";
+
+function PhonePickerButtons({ onPick }: { onPick: (num: string, label: string) => void }) {
+  const { lang } = useLanguage();
+  return (
+    <div className="flex flex-col sm:flex-row gap-3">
+      <Button
+        variant="outline"
+        className="rounded-full px-6 py-4 border-primary/30 hover:bg-primary/10"
+        onClick={() => onPick("0765804568", "Sitevyro")}
+      >
+        <Phone className="w-4 h-4 mr-2" />
+        Sitevyro — 0765804568
+      </Button>
+      <Button
+        variant="outline"
+        className="rounded-full px-6 py-4 border-primary/30 hover:bg-primary/10"
+        onClick={() => onPick("0732505039", lang === "sv" ? "Fotograf" : "Photographer")}
+      >
+        <Phone className="w-4 h-4 mr-2" />
+        {lang === "sv" ? "Fotograf" : "Photographer"} — 0732505039
+      </Button>
+    </div>
+  );
+}
+
+export function ContactUsButton({ className }: { className?: string }) {
+  const { lang } = useLanguage();
+  const [showPicker, setShowPicker] = useState(false);
+
+  const handlePick = (num: string, label: string) => {
+    navigator.clipboard.writeText(num);
+    toast({
+      title: lang === "sv" ? "Telefonnummer kopierat!" : "Phone number copied!",
+      description: `${label}: ${num}`,
+    });
+    setShowPicker(false);
+  };
+
+  return (
+    <div className={`flex flex-col items-center gap-4 ${className ?? ""}`}>
+      {!showPicker ? (
+        <Button
+          onClick={() => setShowPicker(true)}
+          size="lg"
+          className="rounded-full px-10 py-6 text-lg font-semibold bg-primary hover:bg-primary/90"
+        >
+          {lang === "sv" ? "Kontakta oss" : "Contact Us"}
+        </Button>
+      ) : (
+        <>
+          <p className="text-sm text-muted-foreground mb-1">
+            {lang === "sv" ? "Välj vilket nummer du vill kopiera:" : "Choose which number to copy:"}
+          </p>
+          <PhonePickerButtons onPick={handlePick} />
+        </>
+      )}
+    </div>
+  );
+}
 
 export default function SocialFooter() {
   const { lang } = useLanguage();
-
-  const handleCopyPhone = () => {
-    navigator.clipboard.writeText("0732505039");
-    toast({
-      title: lang === "sv" ? "Telefonnummer kopierat!" : "Phone number copied!",
-      description: "0732505039",
-    });
-  };
 
   return (
     <footer className="border-t border-border/50 py-16 px-4 md:px-8">
@@ -39,13 +91,7 @@ export default function SocialFooter() {
             <span className="text-foreground font-medium">{lang === "sv" ? "Fotograf:" : "Photographer:"}</span> 0732505039
           </span>
         </div>
-        <Button
-          onClick={handleCopyPhone}
-          size="lg"
-          className="rounded-full px-10 py-6 text-lg font-semibold bg-primary hover:bg-primary/90"
-        >
-          {lang === "sv" ? "Kontakta oss" : "Contact Us"}
-        </Button>
+        <ContactUsButton />
         <p className="mt-8 text-sm text-muted-foreground">
           © {new Date().getFullYear()} Sitevyro. {lang === "sv" ? "Alla rättigheter förbehållna." : "All rights reserved."}
         </p>
