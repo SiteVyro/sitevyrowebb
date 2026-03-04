@@ -9,7 +9,11 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Globe, Home, Briefcase, Users, Mail, Share2 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-export default function Navbar() {
+interface NavbarProps {
+  socialMode?: boolean;
+}
+
+export default function Navbar({ socialMode = false }: NavbarProps) {
   const { lang, toggleLang, t } = useLanguage();
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(true);
@@ -27,13 +31,18 @@ export default function Navbar() {
     }
   });
 
-  const navItems = [
+  const allNavItems = [
     { name: lang === "sv" ? "Hem" : "Home", href: "/#hero", icon: <Home className="w-4 h-4" /> },
     { name: t.nav.services[lang], href: "/#services", icon: <Briefcase className="w-4 h-4" /> },
     { name: t.nav.about[lang], href: "/#about", icon: <Users className="w-4 h-4" /> },
     { name: lang === "sv" ? "Sociala Medier" : "Social Media", href: "/social", icon: <Share2 className="w-4 h-4" /> },
     { name: t.nav.contact[lang], href: "/#contact", icon: <Mail className="w-4 h-4" /> },
   ];
+
+  // On /social page, only show Home
+  const navItems = socialMode
+    ? allNavItems.filter((item) => item.href === "/#hero")
+    : allNavItems;
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
