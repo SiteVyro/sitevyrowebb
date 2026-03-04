@@ -3,9 +3,18 @@ import Footer from "@/components/Footer";
 import { DottedSurface } from "@/components/ui/dotted-surface";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
-import { Check, Instagram, Facebook, Linkedin } from "lucide-react";
+import { Check, Instagram, Facebook, Linkedin, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GlowCard } from "@/components/ui/spotlight-card";
+import { HorizontalScrollCarousel } from "@/components/ui/horizontal-scroll-carousel";
+
+import portfolio1 from "@/assets/portfolio-1.jpg";
+import portfolio2 from "@/assets/portfolio-2.jpg";
+import portfolio3 from "@/assets/portfolio-3.jpg";
+import portfolio4 from "@/assets/portfolio-4.jpg";
+import portfolio5 from "@/assets/portfolio-5.jpg";
+import portfolio6 from "@/assets/portfolio-6.jpg";
+import portfolio7 from "@/assets/portfolio-7.jpg";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -22,6 +31,11 @@ const platforms = [
   { name: "LinkedIn", icon: Linkedin },
 ];
 
+const portfolioImages = [
+  portfolio1, portfolio2, portfolio3, portfolio4,
+  portfolio5, portfolio6, portfolio7,
+];
+
 export default function Social() {
   const { lang, t } = useLanguage();
 
@@ -29,7 +43,7 @@ export default function Social() {
     <div className="min-h-screen bg-black relative">
       <DottedSurface />
       <div className="relative z-10">
-        <Navbar />
+        <Navbar socialMode />
 
         {/* Hero */}
         <section className="pt-32 pb-16 px-4 md:px-8">
@@ -78,8 +92,10 @@ export default function Social() {
                     customSize
                     className="!aspect-auto flex flex-col items-center justify-center gap-4 p-8"
                   >
-                    <p.icon className="w-10 h-10 text-primary" />
-                    <span className="font-heading font-semibold text-foreground">{p.name}</span>
+                    <div className="flex items-center justify-center w-full">
+                      <p.icon className="w-10 h-10 text-primary" />
+                    </div>
+                    <span className="font-heading font-semibold text-foreground text-center w-full">{p.name}</span>
                   </GlowCard>
                 </motion.div>
               ))}
@@ -119,6 +135,50 @@ export default function Social() {
               </ul>
             </motion.div>
           </div>
+        </section>
+
+        {/* Om fotografen */}
+        <section className="py-16 px-4 md:px-8">
+          <div className="container mx-auto max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="rounded-2xl border border-primary/20 bg-card/50 backdrop-blur-xl p-8 md:p-12 text-center"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                <Camera className="w-8 h-8 text-primary" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
+                {lang === "sv" ? "Om Fotografen" : "About the Photographer"}
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-4">
+                {lang === "sv"
+                  ? "Vår fotograf Simon Pieplow har över 5 års erfarenhet inom fotograferingsbranschen. Med ett öga för detaljer och en passion för att fånga det perfekta ögonblicket levererar han bilder som verkligen gör skillnad."
+                  : "Our photographer Simon Pieplow has over 5 years of experience in the photography industry. With an eye for detail and a passion for capturing the perfect moment, he delivers images that truly make a difference."}
+              </p>
+              <p className="text-base text-muted-foreground/80 max-w-xl mx-auto">
+                {lang === "sv"
+                  ? "Simon har redan ett starkt nätverk av nöjda kunder och solida referenser från tidigare uppdrag inom restaurang, fastighet och event."
+                  : "Simon already has a strong network of satisfied clients and solid references from previous assignments in restaurant, real estate and events."}
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Fotografens Tidigare Verk */}
+        <section className="py-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl md:text-4xl font-bold font-heading text-center mb-4"
+          >
+            {lang === "sv" ? "Fotografens Tidigare Verk" : "Photographer's Previous Work"}
+          </motion.h2>
+          <HorizontalScrollCarousel images={portfolioImages} />
         </section>
 
         {/* CTA */}
