@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Check, Instagram, Facebook, Linkedin, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GlowCard } from "@/components/ui/spotlight-card";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { HorizontalScrollCarousel } from "@/components/ui/horizontal-scroll-carousel";
 
 import portfolio1 from "@/assets/portfolio-1.jpg";
@@ -38,9 +39,10 @@ const portfolioImages = [
 
 export default function Social() {
   const { lang, t } = useLanguage();
+  const isMobile = useIsMobile();
 
   return (
-    <div className="min-h-screen bg-black relative">
+    <div className="min-h-screen bg-black relative overflow-x-hidden">
       <DottedSurface />
       <div className="relative z-10">
         <Navbar socialMode />
@@ -87,16 +89,25 @@ export default function Social() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
-                  <GlowCard
-                    glowColor="purple"
-                    customSize
-                    className="!aspect-auto flex flex-col items-center justify-center gap-4 p-8"
-                  >
-                    <div className="flex items-center justify-center w-full">
-                      <p.icon className="w-10 h-10 text-primary" />
+                  {isMobile ? (
+                    <div className="flex flex-col items-center justify-center gap-4 p-8 rounded-2xl border border-primary/20 bg-card/50 backdrop-blur-xl">
+                      <div className="flex items-center justify-center w-full">
+                        <p.icon className="w-10 h-10 text-primary" />
+                      </div>
+                      <span className="font-heading font-semibold text-foreground text-center w-full">{p.name}</span>
                     </div>
-                    <span className="font-heading font-semibold text-foreground text-center w-full">{p.name}</span>
-                  </GlowCard>
+                  ) : (
+                    <GlowCard
+                      glowColor="purple"
+                      customSize
+                      className="!aspect-auto flex flex-col items-center justify-center gap-4 p-8"
+                    >
+                      <div className="flex items-center justify-center w-full">
+                        <p.icon className="w-10 h-10 text-primary" />
+                      </div>
+                      <span className="font-heading font-semibold text-foreground text-center w-full">{p.name}</span>
+                    </GlowCard>
+                  )}
                 </motion.div>
               ))}
             </div>
