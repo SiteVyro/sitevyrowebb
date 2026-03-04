@@ -38,7 +38,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
   ];
 
   return (
-    <div ref={container} className="relative h-[300vh]">
+    <div ref={container} className="relative h-[200vh]">
       <div className="sticky top-0 h-screen overflow-hidden">
         {images.map(({ src, alt }, index) => {
           const scale = scales[index % scales.length];
@@ -58,9 +58,6 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
             </motion.div>
           );
         })}
-        {/* Fade overlays */}
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent pointer-events-none z-10" />
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-10" />
       </div>
     </div>
   );
