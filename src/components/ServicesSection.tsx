@@ -1,6 +1,7 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
-import { Palette, MousePointerClick, Search, Wrench, Server, Pen } from "lucide-react";
+import { Palette, MousePointerClick, Search, Wrench, Server, Pen, Share2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const serviceIcons = [Palette, MousePointerClick, Search, Wrench, Server, Pen];
 const serviceKeys = ["webdesign", "uiux", "seo", "maintenance", "hosting", "logo"] as const;
@@ -46,6 +47,28 @@ export default function ServicesSection() {
             );
           })}
         </div>
+
+        {/* Social Media card */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-6"
+        >
+          <Link to="/social" className="block">
+            <div className="group rounded-2xl p-8 cursor-pointer bg-primary/[0.04] backdrop-blur-xl border border-primary/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_0_20px_-5px_hsl(var(--primary)/0.15)] hover:border-primary/40 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_0_30px_-5px_hsl(var(--primary)/0.3)] transition-all duration-500 text-center">
+              <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center mb-6 mx-auto group-hover:bg-primary/25 transition-colors duration-500">
+                <Share2 className="w-7 h-7 text-primary group-hover:scale-110 transition-transform duration-500" />
+              </div>
+              <h3 className="text-xl font-heading font-semibold mb-3">{t.socialMedia.title[lang]}</h3>
+              <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto">{t.socialMedia.subtitle[lang]}</p>
+              <span className="inline-block mt-4 text-sm font-medium text-primary">
+                {lang === "sv" ? "Läs mer →" : "Learn more →"}
+              </span>
+            </div>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

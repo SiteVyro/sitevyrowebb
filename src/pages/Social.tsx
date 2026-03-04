@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import SocialFooter from "@/components/SocialFooter";
 import { DottedSurface } from "@/components/ui/dotted-surface";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
@@ -181,25 +181,7 @@ export default function Social() {
           <HorizontalScrollCarousel images={portfolioImages} />
         </section>
 
-        {/* CTA */}
-        <section className="py-16 px-4 md:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <Button
-              asChild
-              size="lg"
-              className="rounded-full px-10 py-6 text-lg font-semibold bg-primary hover:bg-primary/90"
-            >
-              <a href="/#contact">{t.socialMedia.cta[lang]}</a>
-            </Button>
-          </motion.div>
-        </section>
-
-        <Footer />
+        <SocialFooter />
       </div>
     </div>
   );
