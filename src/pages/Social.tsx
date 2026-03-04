@@ -179,13 +179,13 @@ export default function Social() {
         </section>
 
         {/* Fotografens Tidigare Verk */}
-        <section className="py-16">
+        <section>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-4xl font-bold font-heading text-center mb-4"
+            className="text-3xl md:text-4xl font-bold font-heading text-center mb-2"
           >
             {lang === "sv" ? "Fotografens Tidigare Verk" : "Photographer's Previous Work"}
           </motion.h2>
