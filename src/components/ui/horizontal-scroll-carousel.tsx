@@ -16,8 +16,8 @@ const HorizontalScrollCarousel: React.FC<HorizontalScrollCarouselProps> = ({ ima
 
   return (
     <div ref={targetRef} className="relative h-[300vh]">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div style={{ x }} className="flex gap-6">
+      <div className="sticky top-0 flex h-screen items-center overflow-x-hidden overflow-y-hidden">
+        <motion.div style={{ x }} className="flex gap-4 md:gap-6">
           {images.map((src, i) => (
             <Card key={i} src={src} />
           ))}
@@ -29,7 +29,7 @@ const HorizontalScrollCarousel: React.FC<HorizontalScrollCarouselProps> = ({ ima
 
 const Card: React.FC<{ src: string }> = ({ src }) => {
   return (
-    <div className="group relative h-[450px] w-[450px] overflow-hidden rounded-2xl flex-shrink-0">
+    <div className="group relative h-[250px] w-[250px] md:h-[450px] md:w-[450px] overflow-hidden rounded-2xl flex-shrink-0">
       <img
         src={src}
         alt="Portfolio"

@@ -1,5 +1,4 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import { motion } from "framer-motion";
 
 export default function Footer() {
   const { lang, t } = useLanguage();
@@ -17,7 +16,12 @@ export default function Footer() {
 
           <div className="text-sm text-muted-foreground space-y-2">
             <p>info@sitevyro.com</p>
-            <p>0765804568</p>
+            <p>
+              <span className="text-foreground font-medium">Sitevyro:</span> 0765804568
+            </p>
+            <p>
+              <span className="text-foreground font-medium">{lang === "sv" ? "Fotograf:" : "Photographer:"}</span> 0732505039
+            </p>
           </div>
 
           <div className="md:text-right">
