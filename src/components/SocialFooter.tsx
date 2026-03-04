@@ -18,9 +18,9 @@ export default function SocialFooter() {
     <footer className="border-t border-border/50 py-16 px-4 md:px-8">
       <div className="container mx-auto max-w-3xl text-center">
         <h3 className="text-2xl font-heading font-bold mb-8">
-          {lang === "sv" ? "Kontakta Fotografen" : "Contact the Photographer"}
+          {lang === "sv" ? "Kontakta Oss" : "Contact Us"}
         </h3>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-4">
           <a
             href="mailto:Info@sitevyro.com"
             className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
@@ -28,9 +28,15 @@ export default function SocialFooter() {
             <Mail className="w-5 h-5" />
             Info@sitevyro.com
           </a>
+        </div>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
           <span className="flex items-center gap-3 text-muted-foreground">
             <Phone className="w-5 h-5" />
-            0732505039
+            <span className="text-foreground font-medium">Sitevyro:</span> 0765804568
+          </span>
+          <span className="flex items-center gap-3 text-muted-foreground">
+            <Phone className="w-5 h-5" />
+            <span className="text-foreground font-medium">{lang === "sv" ? "Fotograf:" : "Photographer:"}</span> 0732505039
           </span>
         </div>
         <Button
