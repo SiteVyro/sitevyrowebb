@@ -1,26 +1,17 @@
 
 
-## Plan: Tre ändringar
+## Plan
 
-### 1. Ny SocialMediaSection på startsidan
-Skapa `src/components/SocialMediaSection.tsx` — en kort teaser-sektion som placeras efter `ServicesSection` i `Index.tsx`. Innehåller titel, kort beskrivning och en "Läs mer"-knapp som länkar till `/social`.
+### Problem
+Zoom-parallax-animationen skärs av abrupt och det finns onödigt tomt utrymme runt sektionen.
 
-### 2. Uppdatera "Vad som ingår" på /social
-Ändra `socialMedia.services` i `LanguageContext.tsx` till:
-- Fotografering
-- Filmning
-- Drönarfoton
-- Profiloptimering
+### Ändringar
 
-### 3. GlowCard-komponent för plattformskorten
-Skapa `src/components/ui/spotlight-card.tsx` med den angivna GlowCard-komponenten. Använd `glowColor="purple"` för att matcha temat. Byt ut de vanliga plattformskorten i `Social.tsx` mot `<GlowCard>`.
+**1. `src/components/ui/zoom-parallax.tsx`**
+- Lägg till fade-to-black gradient-overlays i topp och bott av sticky-containern (`pointer-events-none` divs med `bg-gradient-to-b from-black` och `bg-gradient-to-t from-black`) så att bilderna tonar ut mjukt istället för att klippas.
 
-### Filer som ändras
-| Fil | Ändring |
-|-----|---------|
-| `src/components/ui/spotlight-card.tsx` | Ny — GlowCard-komponent |
-| `src/contexts/LanguageContext.tsx` | Uppdatera services-listan + lägg till teaser-texter |
-| `src/components/SocialMediaSection.tsx` | Ny — teaser-sektion för startsidan |
-| `src/pages/Index.tsx` | Importera och placera SocialMediaSection |
-| `src/pages/Social.tsx` | Byt plattformskort till GlowCard |
+**2. `src/pages/Social.tsx`**
+- Ta bort `py-16` från sektionen som wrappar ZoomParallax.
+- Ta bort `mb-4` från rubriken och ge den minimal spacing.
+- Minska eller ta bort mellanrum mellan föregående sektion och ZoomParallax, samt mellan ZoomParallax och footern.
 
