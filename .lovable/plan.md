@@ -1,26 +1,26 @@
 
 
-## Plan: Ny sida `/social` för Sociala Medier-tjänster
+## Plan: Tre ändringar
 
-Istället för en sektion på startsidan skapar vi en **helt ny sida** på `/social`.
+### 1. Ny SocialMediaSection på startsidan
+Skapa `src/components/SocialMediaSection.tsx` — en kort teaser-sektion som placeras efter `ServicesSection` i `Index.tsx`. Innehåller titel, kort beskrivning och en "Läs mer"-knapp som länkar till `/social`.
 
-### Ändringar
+### 2. Uppdatera "Vad som ingår" på /social
+Ändra `socialMedia.services` i `LanguageContext.tsx` till:
+- Fotografering
+- Filmning
+- Drönarfoton
+- Profiloptimering
 
-**1. Översättningar — `src/contexts/LanguageContext.tsx`**
-- Lägg till `socialMedia`-nyckel med SV/EN-texter: titel, beskrivning (texten du gav), tjänstepunkter (innehållsplanering, grafisk design, publicering, profiloptimering), CTA-text, och plattformsnamn.
+### 3. GlowCard-komponent för plattformskorten
+Skapa `src/components/ui/spotlight-card.tsx` med den angivna GlowCard-komponenten. Använd `glowColor="purple"` för att matcha temat. Byt ut de vanliga plattformskorten i `Social.tsx` mot `<GlowCard>`.
 
-**2. Ny sida — `src/pages/Social.tsx`**
-- Hero-sektion med titel och beskrivningen du angav
-- Fyra plattformskort (TikTok, Instagram, Facebook, LinkedIn) med ikoner
-- Lista med vad som ingår (check-ikoner)
-- CTA-knapp "Kontakta oss" som länkar till `/#contact`
-- Navbar och Footer inkluderade
-- Samma dark theme och styling som övriga sidan (motion-animationer, glassmorphism)
-- Inga priser visas
-
-**3. Routing — `src/App.tsx`**
-- Lägg till `<Route path="/social" element={<Social />} />`
-
-**4. Navigation — `src/components/Navbar.tsx`**
-- Lägg till "Sociala Medier" / "Social Media" länk som pekar på `/social`
+### Filer som ändras
+| Fil | Ändring |
+|-----|---------|
+| `src/components/ui/spotlight-card.tsx` | Ny — GlowCard-komponent |
+| `src/contexts/LanguageContext.tsx` | Uppdatera services-listan + lägg till teaser-texter |
+| `src/components/SocialMediaSection.tsx` | Ny — teaser-sektion för startsidan |
+| `src/pages/Index.tsx` | Importera och placera SocialMediaSection |
+| `src/pages/Social.tsx` | Byt plattformskort till GlowCard |
 
