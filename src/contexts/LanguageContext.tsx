@@ -100,6 +100,24 @@ const translations = {
     emailPlaceholder: { sv: "din@email.com", en: "your@email.com" },
     messagePlaceholder: { sv: "Berätta om ditt projekt...", en: "Tell us about your project..." },
   },
+  socialMedia: {
+    title: { sv: "Sociala Medier", en: "Social Media" },
+    subtitle: {
+      sv: "Vi hjälper er att vara aktiva och professionella på sociala medier utan att ni behöver lägga tid på det själva.",
+      en: "We help you stay active and professional on social media without you having to spend time on it yourself.",
+    },
+    description: {
+      sv: "Vi planerar, skapar och publicerar innehåll som stärker ert varumärke och gör att ni uppfattas som seriösa när kunder söker upp er.",
+      en: "We plan, create and publish content that strengthens your brand and makes you appear professional when customers look you up.",
+    },
+    services: [
+      { sv: "Innehållsplanering", en: "Content Planning" },
+      { sv: "Grafisk design", en: "Graphic Design" },
+      { sv: "Publicering & schemaläggning", en: "Publishing & Scheduling" },
+      { sv: "Profiloptimering", en: "Profile Optimization" },
+    ],
+    cta: { sv: "Kontakta oss", en: "Contact Us" },
+  },
   footer: {
     rights: { sv: "Alla rättigheter förbehållna.", en: "All rights reserved." },
     address: { sv: "Värnamo, Sverige", en: "Värnamo, Sweden" },
