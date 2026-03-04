@@ -6,6 +6,7 @@ import ContactSection from "@/components/ContactSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import ShowcaseSection from "@/components/ShowcaseSection";
+import SocialMediaSection from "@/components/SocialMediaSection";
 import { DottedSurface } from "@/components/ui/dotted-surface";
 
 const Index = () => {
@@ -17,6 +18,7 @@ const Index = () => {
         <HeroSection />
         <ShowcaseSection />
         <ServicesSection />
+        <SocialMediaSection />
         <AboutSection />
         <ContactSection />
         <FAQSection />
