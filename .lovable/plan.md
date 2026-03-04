@@ -1,15 +1,10 @@
 
 
 ## Problem
-1. Fade-gradient-overlays döljer bilderna (gör dem osynliga vid topp/bott)
-2. `h-[300vh]` skapar massvis med tomt utrymme efter att animationen är klar
+Bilderna skalar ut och når kanten av viewport, vilket skapar en synlig skarp kant. 
 
-## Ändringar
+## Lösning
 
-**1. `src/components/ui/zoom-parallax.tsx`**
-- Ta bort fade-overlay-divarna (rad 61-63) helt -- bilderna ska synas fullt ut
-- Minska scroll-container från `h-[300vh]` till `h-[200vh]` för att reducera tomrummet efter sektionen
-
-**2. `src/pages/Social.tsx`**
-- Ingen ändring behövs
+**`src/components/ui/zoom-parallax.tsx`**
+- Minska scale-värdena så att bilderna inte skalar ut till viewportens kant. Ändra från `[1,4], [1,5], [1,6], [1,8], [1,9]` till lägre värden som `[1,2.5], [1,3], [1,3.5], [1,3], [1,3.5], [1,4.5], [1,5]` — bilderna skalar fortfarande men når aldrig kanterna.
 
