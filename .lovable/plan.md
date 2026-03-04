@@ -1,17 +1,15 @@
 
 
-## Plan
+## Problem
+1. Fade-gradient-overlays döljer bilderna (gör dem osynliga vid topp/bott)
+2. `h-[300vh]` skapar massvis med tomt utrymme efter att animationen är klar
 
-### Problem
-Zoom-parallax-animationen skärs av abrupt och det finns onödigt tomt utrymme runt sektionen.
-
-### Ändringar
+## Ändringar
 
 **1. `src/components/ui/zoom-parallax.tsx`**
-- Lägg till fade-to-black gradient-overlays i topp och bott av sticky-containern (`pointer-events-none` divs med `bg-gradient-to-b from-black` och `bg-gradient-to-t from-black`) så att bilderna tonar ut mjukt istället för att klippas.
+- Ta bort fade-overlay-divarna (rad 61-63) helt -- bilderna ska synas fullt ut
+- Minska scroll-container från `h-[300vh]` till `h-[200vh]` för att reducera tomrummet efter sektionen
 
 **2. `src/pages/Social.tsx`**
-- Ta bort `py-16` från sektionen som wrappar ZoomParallax.
-- Ta bort `mb-4` från rubriken och ge den minimal spacing.
-- Minska eller ta bort mellanrum mellan föregående sektion och ZoomParallax, samt mellan ZoomParallax och footern.
+- Ingen ändring behövs
 
