@@ -7,11 +7,14 @@ import {
 } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Globe, Home, Briefcase, Users, Mail, Share2 } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const { lang, toggleLang, t } = useLanguage();
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
@@ -25,12 +28,27 @@ export default function Navbar() {
   });
 
   const navItems = [
-    { name: lang === "sv" ? "Hem" : "Home", href: "#hero", icon: <Home className="w-4 h-4" /> },
-    { name: t.nav.services[lang], href: "#services", icon: <Briefcase className="w-4 h-4" /> },
-    { name: t.nav.about[lang], href: "#about", icon: <Users className="w-4 h-4" /> },
+    { name: lang === "sv" ? "Hem" : "Home", href: "/#hero", icon: <Home className="w-4 h-4" /> },
+    { name: t.nav.services[lang], href: "/#services", icon: <Briefcase className="w-4 h-4" /> },
+    { name: t.nav.about[lang], href: "/#about", icon: <Users className="w-4 h-4" /> },
     { name: lang === "sv" ? "Sociala Medier" : "Social Media", href: "/social", icon: <Share2 className="w-4 h-4" /> },
-    { name: t.nav.contact[lang], href: "#contact", icon: <Mail className="w-4 h-4" /> },
+    { name: t.nav.contact[lang], href: "/#contact", icon: <Mail className="w-4 h-4" /> },
   ];
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    if (href.startsWith("/#")) {
+      const hash = href.slice(1);
+      if (location.pathname !== "/") {
+        navigate("/" + hash);
+      } else {
+        const el = document.querySelector(hash);
+        el?.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate(href);
+    }
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -42,7 +60,8 @@ export default function Navbar() {
       >
         {/* Logo */}
         <a
-          href="#hero"
+          href="/"
+          onClick={(e) => handleNavClick(e, "/#hero")}
           className="text-base font-heading font-bold text-foreground tracking-tight px-4 pr-2"
         >
           Site<span className="text-primary">vyro</span>
@@ -53,6 +72,7 @@ export default function Navbar() {
           <a
             key={item.href}
             href={item.href}
+            onClick={(e) => handleNavClick(e, item.href)}
             className="relative text-sm font-medium text-muted-foreground px-4 py-2 rounded-full hover:text-primary hover:bg-primary/10 transition-all duration-300 hidden sm:block"
           >
             {item.name}
@@ -64,6 +84,7 @@ export default function Navbar() {
           <a
             key={`mobile-${item.href}`}
             href={item.href}
+            onClick={(e) => handleNavClick(e, item.href)}
             className="text-muted-foreground p-2 rounded-full hover:text-primary hover:bg-primary/10 transition-all duration-300 sm:hidden"
           >
             {item.icon}
