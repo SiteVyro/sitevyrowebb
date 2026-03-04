@@ -19,13 +19,13 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
     offset: ['start start', 'end end'],
   });
 
-  const scale4 = useTransform(scrollYProgress, [0, 1], [1, 4]);
+  const scale1 = useTransform(scrollYProgress, [0, 1], [1, 2.5]);
+  const scale2 = useTransform(scrollYProgress, [0, 1], [1, 3]);
+  const scale3 = useTransform(scrollYProgress, [0, 1], [1, 3.5]);
+  const scale4 = useTransform(scrollYProgress, [0, 1], [1, 4.5]);
   const scale5 = useTransform(scrollYProgress, [0, 1], [1, 5]);
-  const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
-  const scale8 = useTransform(scrollYProgress, [0, 1], [1, 8]);
-  const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
 
-  const scales = [scale4, scale5, scale6, scale5, scale6, scale8, scale9];
+  const scales = [scale1, scale2, scale3, scale2, scale3, scale4, scale5];
 
   const positions = [
     '', // index 0: center/main
