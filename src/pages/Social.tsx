@@ -5,6 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
 import { Check, Instagram, Facebook, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { GlowCard } from "@/components/ui/spotlight-card";
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -71,10 +72,15 @@ export default function Social() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="rounded-2xl border border-primary/20 bg-card/50 backdrop-blur-xl p-8 flex flex-col items-center gap-4 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
                 >
-                  <p.icon className="w-10 h-10 text-primary" />
-                  <span className="font-heading font-semibold text-foreground">{p.name}</span>
+                  <GlowCard
+                    glowColor="purple"
+                    customSize
+                    className="!aspect-auto flex flex-col items-center justify-center gap-4 p-8"
+                  >
+                    <p.icon className="w-10 h-10 text-primary" />
+                    <span className="font-heading font-semibold text-foreground">{p.name}</span>
+                  </GlowCard>
                 </motion.div>
               ))}
             </div>

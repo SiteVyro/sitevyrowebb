@@ -111,9 +111,9 @@ const translations = {
       en: "We plan, create and publish content that strengthens your brand and makes you appear professional when customers look you up.",
     },
     services: [
-      { sv: "Innehållsplanering", en: "Content Planning" },
-      { sv: "Grafisk design", en: "Graphic Design" },
-      { sv: "Publicering & schemaläggning", en: "Publishing & Scheduling" },
+      { sv: "Fotografering", en: "Photography" },
+      { sv: "Filmning", en: "Filming" },
+      { sv: "Drönarfoton", en: "Drone Photos" },
       { sv: "Profiloptimering", en: "Profile Optimization" },
     ],
     cta: { sv: "Kontakta oss", en: "Contact Us" },
