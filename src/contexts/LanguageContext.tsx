@@ -132,12 +132,12 @@ const translations = {
       {
         q: { sv: "Vem är du?", en: "Who are you?" },
         a: {
-          sv: "Jag heter William Lindsjö, är 16 år och grundare av siteVyro. Jag brinner för att hjälpa småföretag att synas online – med en personlig, långsiktig och prisvärd lösning.",
-          en: "My name is William Lindsjö, I'm 16 years old and the founder of siteVyro. I'm passionate about helping small businesses get noticed online – with a personal, long-term and affordable solution.",
+          sv: "Jag heter William Lindsjö, är 17 år och grundare av siteVyro. Jag brinner för att hjälpa småföretag att synas online – med en personlig, långsiktig och prisvärd lösning.",
+          en: "My name is William Lindsjö, I'm 17 years old and the founder of siteVyro. I'm passionate about helping small businesses get noticed online – with a personal, long-term and affordable solution.",
         },
       },
       {
-        q: { sv: "Varför ska jag välja dig – du är ju bara 16 år?", en: "Why should I choose you – you're only 16?" },
+        q: { sv: "Varför ska jag välja dig – du är ju bara 17 år?", en: "Why should I choose you – you're only 17?" },
         a: {
           sv: "Min ålder är min styrka! Jag har vuxit upp med internet, är hungrig, engagerad och har låga omkostnader. Du får samma kvalitet som en dyr byrå till en bråkdel av priset – och jag finns kvar i decennier.",
           en: "My age is my strength! I grew up with the internet, I'm hungry, dedicated and have low overhead. You get the same quality as an expensive agency at a fraction of the price – and I'll be around for decades.",
@@ -162,13 +162,6 @@ const translations = {
         a: {
           sv: "Domänförnyelse kostar 250 kr/år. Det är en ren vidarefakturering – du betalar samma pris som jag.",
           en: "Domain renewal costs SEK 250/year. It's a pure pass-through – you pay the same price as I do.",
-        },
-      },
-      {
-        q: { sv: "Finns det någon kampanj just nu?", en: "Are there any promotions right now?" },
-        a: {
-          sv: "Ja! Tom 15 april får du GRATIS översättning till engelska (värde 3 000 kr) när du beställer webbpaket + underhåll.",
-          en: "Yes! Until April 15 you get FREE English translation (value SEK 3,000) when you order a web package + maintenance.",
         },
       },
       {
