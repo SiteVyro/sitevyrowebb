@@ -1,4 +1,5 @@
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const { lang, t } = useLanguage();
@@ -28,6 +29,12 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} Sitevyro. {t.footer.rights[lang]}
             </p>
+            <Link
+              to="/vilkor"
+              className="mt-2 inline-block text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Vilkor
+            </Link>
           </div>
         </div>
       </div>

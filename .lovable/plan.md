@@ -1,7 +1,12 @@
-## Ändringar
+## Lösning
 
-**Fil: `src/contexts/LanguageContext.tsx`**
+**1. Ny sida `src/pages/Vilkor.tsx`**
+- Samma mörka tema, navbar och bakgrund som resten av sajten.
+- Innehåller exakt den text användaren skickat (Allmänna Villkor - SiteVyro, daterad 2026-06-11, alla 16 punkter).
+- Strukturerad med h1, h2 för rubriker, listor för punktlistor, läsbar typografi (max-width container).
 
-1. FAQ-svar "Vem är du?" — ändra ålder från **16 år** till **17 år** (både svenska och engelska).
-2. FAQ-fråga "Varför ska jag välja dig – du är ju bara 16 år?" — ändra **16** till **17** (både svenska och engelska).
-3. Ta bort hela FAQ-posten **"Finns det någon kampanj just nu?" / "Are there any promotions right now?"** (inklusive svaret om gratis översättning tom 15 april).
+**2. Routing `src/App.tsx`**
+- Lägg till `<Route path="/vilkor" element={<Vilkor />} />`.
+
+**3. Footer-länk**
+- Lägg till "Vilkor" i `src/components/Footer.tsx` och `src/components/SocialFooter.tsx` som länkar till `/vilkor`.
