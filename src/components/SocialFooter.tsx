@@ -67,6 +67,7 @@ export function ContactUsButton({ className }: { className?: string }) {
 
 export default function SocialFooter() {
   const { lang } = useLanguage();
+  const [adminOpen, setAdminOpen] = useState(false);
 
   return (
     <footer className="border-t border-border/50 py-16 px-4 md:px-8">
@@ -104,29 +105,18 @@ export default function SocialFooter() {
           >
             Vilkor
           </Link>
-          <Link
-            to="/"
+          <button
+            onClick={() => setAdminOpen(true)}
             aria-label="Admin"
             title="Admin"
             className="text-muted-foreground/40 hover:text-primary transition-colors"
-            onClick={(e) => {
-              e.preventDefault();
-              window.dispatchEvent(new CustomEvent("open-admin-login"));
-            }}
           >
-            <ShieldIcon />
-          </Link>
+            <Shield className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
+      <AdminLoginModal open={adminOpen} onOpenChange={setAdminOpen} />
     </footer>
   );
 }
 
-function ShieldIcon() {
-  // inline to avoid extra import block changes
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    </svg>
-  );
-}
