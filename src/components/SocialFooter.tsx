@@ -3,6 +3,7 @@ import { Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function PhonePickerButtons({ onPick }: { onPick: (num: string, label: string) => void }) {
   const { lang } = useLanguage();
@@ -95,6 +96,12 @@ export default function SocialFooter() {
         <p className="mt-8 text-sm text-muted-foreground">
           © {new Date().getFullYear()} Sitevyro. {lang === "sv" ? "Alla rättigheter förbehållna." : "All rights reserved."}
         </p>
+        <Link
+          to="/vilkor"
+          className="mt-3 inline-block text-sm text-muted-foreground hover:text-primary transition-colors"
+        >
+          Vilkor
+        </Link>
       </div>
     </footer>
   );
