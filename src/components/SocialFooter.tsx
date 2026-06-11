@@ -1,5 +1,6 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Shield } from "lucide-react";
+import AdminLoginModal from "./AdminLoginModal";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { useState } from "react";
@@ -66,6 +67,7 @@ export function ContactUsButton({ className }: { className?: string }) {
 
 export default function SocialFooter() {
   const { lang } = useLanguage();
+  const [adminOpen, setAdminOpen] = useState(false);
 
   return (
     <footer className="border-t border-border/50 py-16 px-4 md:px-8">
@@ -96,13 +98,25 @@ export default function SocialFooter() {
         <p className="mt-8 text-sm text-muted-foreground">
           © {new Date().getFullYear()} Sitevyro. {lang === "sv" ? "Alla rättigheter förbehållna." : "All rights reserved."}
         </p>
-        <Link
-          to="/vilkor"
-          className="mt-3 inline-block text-sm text-muted-foreground hover:text-primary transition-colors"
-        >
-          Vilkor
-        </Link>
+        <div className="mt-3 flex items-center justify-center gap-3">
+          <Link
+            to="/vilkor"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors"
+          >
+            Vilkor
+          </Link>
+          <button
+            onClick={() => setAdminOpen(true)}
+            aria-label="Admin"
+            title="Admin"
+            className="text-muted-foreground/40 hover:text-primary transition-colors"
+          >
+            <Shield className="w-3.5 h-3.5" />
+          </button>
+        </div>
       </div>
+      <AdminLoginModal open={adminOpen} onOpenChange={setAdminOpen} />
     </footer>
   );
 }
+
