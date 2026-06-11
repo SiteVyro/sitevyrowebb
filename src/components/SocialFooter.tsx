@@ -1,5 +1,6 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Shield } from "lucide-react";
+import AdminLoginModal from "./AdminLoginModal";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { useState } from "react";
