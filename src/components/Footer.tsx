@@ -1,8 +1,12 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Shield } from "lucide-react";
+import AdminLoginModal from "./AdminLoginModal";
 
 export default function Footer() {
   const { lang, t } = useLanguage();
+  const [adminOpen, setAdminOpen] = useState(false);
 
   return (
     <footer className="border-t border-border/50 py-12 px-4 md:px-8">
@@ -29,15 +33,26 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} Sitevyro. {t.footer.rights[lang]}
             </p>
-            <Link
-              to="/vilkor"
-              className="mt-2 inline-block text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              Vilkor
-            </Link>
+            <div className="mt-2 flex md:justify-end gap-3 items-center">
+              <Link
+                to="/vilkor"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                Vilkor
+              </Link>
+              <button
+                onClick={() => setAdminOpen(true)}
+                aria-label="Admin"
+                title="Admin"
+                className="text-muted-foreground/40 hover:text-primary transition-colors"
+              >
+                <Shield className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
+      <AdminLoginModal open={adminOpen} onOpenChange={setAdminOpen} />
     </footer>
   );
 }
